@@ -1,0 +1,866 @@
+file 24626195 1568377172                                        
+version 2
+run General-0-20190913-09:19:22-28204
+attr configname General
+attr datetime 20190913-09:19:22
+attr experiment General
+attr inifile loRaNetworkTest.ini
+attr iterationvars "$0=\"avg\""
+attr iterationvarsf avg-
+attr measurement "$0=\"avg\""
+attr network LoRaNetworkTest
+attr processid 28204
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.numberOfGateways 1
+param **.loRaGW[0].numUdpApps 1
+param **.loRaGW[0].packetForwarder.localPort 2000
+param **.loRaGW[0].packetForwarder.destPort 1000
+param **.loRaGW[0].packetForwarder.destAddresses "\"networkServer\""
+param **.loRaGW[0].packetForwarder.indexNumber 0
+param **.loRaGW[1].numUdpApps 1
+param **.loRaGW[1].packetForwarder.localPort 2000
+param **.loRaGW[1].packetForwarder.destPort 1000
+param **.loRaGW[1].packetForwarder.destAddresses "\"networkServer\""
+param **.loRaGW[1].packetForwarder.indexNumber 1
+param **.networkServer.numUdpApps 1
+param **.networkServer.**.evaluateADRinServer false
+param **.networkServer.udpApp[0].typename "\"NetworkServerApp\""
+param **.networkServer.udpApp[0].destAddresses "\"loRaGW[0]\""
+param **.networkServer.udpApp[0].destPort 2000
+param **.networkServer.udpApp[0].localPort 1000
+param **.networkServer.udpApp[0].adrMethod "\"avg\""
+param **.numberOfNodes 10
+param **.numberOfPacketsToSend 0
+param **.timeToFirstPacket exponential(100s)
+param **.timeToNextPacket exponential(100s)
+param **.alohaChannelModel false
+param **.loRaNodes[*].**.initFromDisplayString false
+param **.loRaNodes[*].**.evaluateADRinNode false
+param **.loRaNodes[*].**initialLoRaSF intuniform(7,12)
+param **.loRaNodes[*].**initialLoRaBW "125 kHz"
+param **.loRaNodes[*].**initialLoRaCR 4
+param **.loRaNodes[*].**initialLoRaTP 14dBm
+param **.loRaNodes[*].**.initialX "uniform(0m, 480m)"
+param **.loRaNodes[*].**.initialY "uniform(0m, 480m)"
+param **.LoRaGWNic.radio.iAmGateway true
+param **.loRaGW[*].**.initFromDisplayString false
+param **.loRaGW[0].**.initialX 240m
+param **.loRaGW[0].**.initialY 240m
+param **.loRaNodes[*].LoRaNic.radio.energyConsumerType "\"LoRaEnergyConsumer\""
+param **.loRaNodes[*].**.energySourceModule "\"IdealEpEnergyStorage\""
+param **.loRaNodes[*].LoRaNic.radio.energyConsumer.configFile "xmldoc(\"energyConsumptionParameters.xml\")"
+param **.sigma 0
+param **.constraintAreaMinX 0m
+param **.constraintAreaMinY 0m
+param **.constraintAreaMinZ 0m
+param **.constraintAreaMaxX 480m
+param **.constraintAreaMaxY 480m
+param **.constraintAreaMaxZ 0m
+param LoRaNetworkTest.**.radio.separateTransmissionParts false
+param LoRaNetworkTest.**.radio.separateReceptionParts false
+param **.delayer.config "xmldoc(\"cloudDelays.xml\")"
+param **.radio.radioMediumModule "\"LoRaMedium\""
+param **.LoRaMedium.pathLossType "\"LoRaLogNormalShadowing\""
+param **.minInterferenceTime 0s
+param **.displayAddresses false
+
+vector 0 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp "SF Vector" ETV
+vector 1 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp "TP Vector" ETV
+vector 2 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp elapsedTime ETV
+vector 3 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp messageDelay ETV
+vector 4 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp MCEnergyVector ETV
+vector 5 LoRaNetworkTest.loRaNodes[8].SimpleLoRaApp sensorEnergyVector ETV
+vector 6 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 7 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 8 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 9 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 10 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 11 LoRaNetworkTest.loRaNodes[8].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 12 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp "SF Vector" ETV
+vector 13 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp "TP Vector" ETV
+vector 14 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp elapsedTime ETV
+vector 15 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp messageDelay ETV
+vector 16 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp MCEnergyVector ETV
+vector 17 LoRaNetworkTest.loRaNodes[3].SimpleLoRaApp sensorEnergyVector ETV
+vector 18 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 19 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 20 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 21 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 22 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 23 LoRaNetworkTest.loRaNodes[3].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 24 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp "SF Vector" ETV
+vector 25 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp "TP Vector" ETV
+vector 26 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp elapsedTime ETV
+vector 27 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp messageDelay ETV
+vector 28 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp MCEnergyVector ETV
+vector 29 LoRaNetworkTest.loRaNodes[9].SimpleLoRaApp sensorEnergyVector ETV
+vector 30 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 31 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 32 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 33 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 34 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 35 LoRaNetworkTest.loRaGW[0].udp sentPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source sentPk
+attr title "packets sent, vector(packetBytes)"
+vector 36 LoRaNetworkTest.loRaGW[0].networkLayer.arp sentReq:vector ETV
+attr title "ARP request sent, vector"
+vector 37 LoRaNetworkTest.loRaGW[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 38 LoRaNetworkTest.loRaGW[0].eth[0].mac rxPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 39 LoRaNetworkTest.loRaGW[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, vector(packetBytes)"
+vector 40 LoRaNetworkTest.gwRouter[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 41 LoRaNetworkTest.gwRouter[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 42 LoRaNetworkTest.gwRouter[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 43 LoRaNetworkTest.gwRouter[0].networkLayer.arp sentReply:vector ETV
+attr title "ARP replies sent, vector"
+vector 44 LoRaNetworkTest.gwRouter[0].eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 45 LoRaNetworkTest.gwRouter[0].eth[0].mac rxPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 46 LoRaNetworkTest.gwRouter[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, vector(packetBytes)"
+vector 47 LoRaNetworkTest.loRaGW[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 48 LoRaNetworkTest.loRaGW[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 49 LoRaNetworkTest.loRaGW[0].eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 50 LoRaNetworkTest.gwRouter[0].ppp[0].queue rcvdPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 51 LoRaNetworkTest.gwRouter[0].ppp[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 52 LoRaNetworkTest.gwRouter[0].ppp[0].ppp rcvdPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 53 LoRaNetworkTest.gwRouter[0].ppp[0].ppp txState:vector ETV
+attr interpolationmode sample-hold
+attr title "tx state, vector"
+vector 54 LoRaNetworkTest.gwRouter[0].ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 55 LoRaNetworkTest.internetCloud.ppp[1].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 56 LoRaNetworkTest.internetCloud.ppp[1].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 57 LoRaNetworkTest.internetCloud.ppp[0].queue rcvdPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "received packets, vector(packetBytes)"
+vector 58 LoRaNetworkTest.internetCloud.ppp[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 59 LoRaNetworkTest.internetCloud.ppp[0].ppp rcvdPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 60 LoRaNetworkTest.internetCloud.ppp[0].ppp txState:vector ETV
+attr interpolationmode sample-hold
+attr title "tx state, vector"
+vector 61 LoRaNetworkTest.internetCloud.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 62 LoRaNetworkTest.nsRouter.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 63 LoRaNetworkTest.nsRouter.ppp[0].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 64 LoRaNetworkTest.nsRouter.networkLayer.arp sentReq:vector ETV
+attr title "ARP request sent, vector"
+vector 65 LoRaNetworkTest.nsRouter.eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 66 LoRaNetworkTest.nsRouter.eth[0].mac rxPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 67 LoRaNetworkTest.nsRouter.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, vector(packetBytes)"
+vector 68 LoRaNetworkTest.networkServer.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 69 LoRaNetworkTest.networkServer.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 70 LoRaNetworkTest.networkServer.eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 71 LoRaNetworkTest.networkServer.networkLayer.arp sentReply:vector ETV
+attr title "ARP replies sent, vector"
+vector 72 LoRaNetworkTest.networkServer.eth[0].encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 73 LoRaNetworkTest.networkServer.eth[0].mac rxPkFromHL:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkFromHL
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 74 LoRaNetworkTest.networkServer.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source txPk
+attr title "packets transmitted, vector(packetBytes)"
+vector 75 LoRaNetworkTest.nsRouter.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 76 LoRaNetworkTest.nsRouter.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 77 LoRaNetworkTest.nsRouter.eth[0].encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 78 LoRaNetworkTest.networkServer.udp rcvdPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rcvdPk
+attr title "packets received, vector(packetBytes)"
+vector 79 LoRaNetworkTest.networkServer.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr title "packets passed up, vector(count)"
+vector 80 LoRaNetworkTest.loRaNodes[9].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 81 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp "SF Vector" ETV
+vector 82 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp "TP Vector" ETV
+vector 83 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp elapsedTime ETV
+vector 84 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp messageDelay ETV
+vector 85 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp MCEnergyVector ETV
+vector 86 LoRaNetworkTest.loRaNodes[7].SimpleLoRaApp sensorEnergyVector ETV
+vector 87 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 88 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 89 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 90 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 91 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 92 LoRaNetworkTest.loRaNodes[7].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 93 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp "SF Vector" ETV
+vector 94 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp "TP Vector" ETV
+vector 95 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp elapsedTime ETV
+vector 96 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp messageDelay ETV
+vector 97 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp MCEnergyVector ETV
+vector 98 LoRaNetworkTest.loRaNodes[4].SimpleLoRaApp sensorEnergyVector ETV
+vector 99 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 100 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 101 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 102 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 103 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 104 LoRaNetworkTest.loRaNodes[4].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 105 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp "SF Vector" ETV
+vector 106 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp "TP Vector" ETV
+vector 107 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp elapsedTime ETV
+vector 108 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp messageDelay ETV
+vector 109 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp MCEnergyVector ETV
+vector 110 LoRaNetworkTest.loRaNodes[2].SimpleLoRaApp sensorEnergyVector ETV
+vector 111 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 112 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 113 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 114 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 115 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 116 LoRaNetworkTest.loRaNodes[2].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 117 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp "SF Vector" ETV
+vector 118 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp "TP Vector" ETV
+vector 119 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp elapsedTime ETV
+vector 120 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp messageDelay ETV
+vector 121 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp MCEnergyVector ETV
+vector 122 LoRaNetworkTest.loRaNodes[1].SimpleLoRaApp sensorEnergyVector ETV
+vector 123 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 124 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 125 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 126 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 127 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 128 LoRaNetworkTest.loRaNodes[1].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 129 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp "SF Vector" ETV
+vector 130 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp "TP Vector" ETV
+vector 131 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp elapsedTime ETV
+vector 132 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp messageDelay ETV
+vector 133 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp MCEnergyVector ETV
+vector 134 LoRaNetworkTest.loRaNodes[0].SimpleLoRaApp sensorEnergyVector ETV
+vector 135 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 136 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 137 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 138 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 139 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 140 LoRaNetworkTest.loRaNodes[0].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 141 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp "SF Vector" ETV
+vector 142 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp "TP Vector" ETV
+vector 143 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp elapsedTime ETV
+vector 144 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp messageDelay ETV
+vector 145 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp MCEnergyVector ETV
+vector 146 LoRaNetworkTest.loRaNodes[6].SimpleLoRaApp sensorEnergyVector ETV
+vector 147 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 148 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 149 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 150 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 151 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 152 LoRaNetworkTest.loRaNodes[6].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 153 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp "SF Vector" ETV
+vector 154 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp "TP Vector" ETV
+vector 155 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp elapsedTime ETV
+vector 156 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp messageDelay ETV
+vector 157 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp MCEnergyVector ETV
+vector 158 LoRaNetworkTest.loRaNodes[5].SimpleLoRaApp sensorEnergyVector ETV
+vector 159 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 160 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 161 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity, vector"
+vector 162 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr source powerConsumptionChanged
+attr title "Power consumption, vector"
+vector 163 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 164 LoRaNetworkTest.loRaNodes[5].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+0	27127 17830 84398 433068 86411.19461606326 443411.19461606326 596 8 8 4768 38144
+1	44957 18426 84398 433068 86411.19461606326 443411.19461606326 596 14 14 8344 116816
+2	63383 19022 84398 433068 86411.19461606326 443411.19461606326 596 600 600 357600 214560000
+3	82405 22002 84398 433068 86411.19461606326 443411.19461606326 596 4.139776 4.139776 2467.306496 10214.096216785
+4	104407 25578 84398 433068 86411.19461606326 443411.19461606326 596 0.667618996176 0.667618996176 397.90092172089 265.64621393681
+5	129985 21406 84398 433068 86411.19461606326 443411.19461606326 596 0.10857 0.10857 64.70772 7.0253171604001
+6	151391 106980 84399 433096 86411.19461606326 443415.33439206326 3576 1 3 5960 11920
+7	258371 298988 84399 433096 86411.19461606326 443415.33439206326 9536 0 0.1452 124.69531668 13.786862839265
+8	557359 114132 84399 433096 86411.19461606326 443415.33439206326 3576 nan nan nan nan
+9	671491 298988 84399 433096 86411.19461606326 443415.33439206326 9536 0 0.1452 124.69531668 13.786862839265
+10	970479 73704 84399 433081 86411.19461606326 443411.33439206326 2384 0 2 2384 3576
+11	1044183 73704 84423 433096 86412.33439206326 443415.33439206326 2384 0 2 2384 4768
+12	1117887 16638 84427 433097 86415.47296805 443415.47296805 596 7 7 4172 29204
+13	1134525 17234 84427 433097 86415.47296805 443415.47296805 596 14 14 8344 116816
+14	1151759 17830 84427 433097 86415.47296805 443415.47296805 596 600 600 357600 214560000
+15	1169589 20214 84427 433097 86415.47296805 443415.47296805 596 4.07808 4.07808 2430.53568 9911.9189458944
+16	1189803 23790 84427 433097 86415.47296805 443415.47296805 596 0.66151720008 0.66151720008 394.26425124769 260.81258357701
+17	1213593 20214 84427 433097 86415.47296805 443415.47296805 596 0.10857 0.10857 64.70772 7.0253171604001
+18	1233807 99828 84428 433125 86415.47296805 443419.55104805 3576 1 3 5960 11920
+19	1333635 279916 84428 433125 86415.47296805 443419.55104805 9536 0 0.1452 124.69531668 13.786862839265
+20	1613551 106980 84428 433125 86415.47296805 443419.55104805 3576 nan nan nan nan
+21	1720531 279916 84428 433125 86415.47296805 443419.55104805 9536 0 0.1452 124.69531668 13.786862839265
+22	2000447 66552 84428 433110 86415.47296805 443415.55104805 2384 0 2 2384 3576
+23	2066999 66552 84452 433125 86416.55104805 443419.55104805 2384 0 2 2384 4768
+24	2133551 19022 84456 433126 86453.55657202279 443453.55657202279 596 10 10 5960 59600
+25	2152573 19022 84456 433126 86453.55657202279 443453.55657202279 596 14 14 8344 116816
+26	2171595 19618 84456 433126 86453.55657202279 443453.55657202279 596 600 600 357600 214560000
+27	2191213 22598 84456 433126 86453.55657202279 443453.55657202279 596 4.493568 4.493568 2678.166528 12034.523408892
+28	2213811 26174 84456 433126 86453.55657202279 443453.55657202279 596 0.702609378768 0.702609378768 418.75518974572 294.22132372312
+29	2239985 22002 84456 433126 86453.55657202279 443453.55657202279 596 0.10857 0.10857 64.70772 7.0253171604001
+30	2261987 110556 84457 433222 86453.55657202279 443458.05014002279 3576 1 3 5960 11920
+31	2372543 308524 84457 433222 86453.55657202279 443458.05014002279 9536 0 0.1452 124.69531668 13.786862839265
+32	2681067 117708 84457 433222 86453.55657202279 443458.05014002279 3576 nan nan nan nan
+33	2798775 308524 84457 433222 86453.55657202279 443458.05014002279 9536 0 0.1452 124.69531668 13.786862839265
+34	3107299 73704 84457 433139 86453.55657202279 443454.05014002279 2384 0 2 2384 3576
+35	3181003 133093 84473 433453 86454.05014009264 443527.60085039031 4170 16 16 66720 1067520
+36	3314096 36822 84474 433144 86454.05014009264 443454.05014009264 1191 1 1 1191 1191
+37	3350918 171106 84476 433455 86454.05014009264 443527.60085039031 5361 28 36 183468 6338064
+38	3522024 171106 84477 433456 86454.05014009264 443527.60085039031 5361 64 64 343104 21958656
+39	3693130 171106 84483 433464 86454.05014066864 443527.60085096631 5361 64 64 343104 21958656
+40	3864236 171106 84486 433465 86454.05014071864 443527.60085101631 5361 64 64 343104 21958656
+41	4035342 171106 84486 433465 86454.05014071864 443527.60085101631 5361 64 64 343104 21958656
+42	4206448 171106 84487 433466 86454.05014071864 443527.60085101631 5361 28 36 183468 6338064
+43	4377554 36822 84489 433159 86454.05014071864 443454.05014071864 1191 1 1 1191 1191
+44	4414376 38013 84491 433161 86454.05014071864 443454.05014071864 1191 28 28 33348 933744
+45	4452389 38013 84492 433162 86454.05014071864 443454.05014071864 1191 64 64 76224 4878336
+46	4490402 38013 84496 433166 86454.05014129464 443454.05014129464 1191 64 64 76224 4878336
+47	4528415 38013 84497 433167 86454.05014134464 443454.05014134464 1191 64 64 76224 4878336
+48	4566428 38013 84497 433167 86454.05014134464 443454.05014134464 1191 64 64 76224 4878336
+49	4604441 38013 84498 433168 86454.05014134464 443454.05014134464 1191 28 28 33348 933744
+50	4642454 133093 84508 433468 86454.05014197064 443527.60085101631 4170 36 36 150120 5404320
+51	4775547 128923 84508 433468 86454.05014197064 443527.60085101631 4170 0 0 0 0
+52	4904470 133093 84509 433469 86454.05014197064 443527.60085101631 4170 36 36 150120 5404320
+53	5037563 257846 84509 433472 86454.05014197064 443527.60085136031 8340 0 1 4170 4170
+54	5295409 133093 84509 433469 86454.05014197064 443527.60085101631 4170 43 43 179310 7710330
+55	5428502 133093 84512 433473 86454.05014236464 443527.60085141031 4170 43 43 179310 7710330
+56	5561595 133093 84512 433473 86454.05014236464 443527.60085141031 4170 36 36 150120 5404320
+57	5694688 133093 84516 433477 86454.06014265264 443527.61085169831 4170 36 36 150120 5404320
+58	5827781 128923 84516 433477 86454.06014265264 443527.61085169831 4170 0 0 0 0
+59	5956704 133093 84517 433478 86454.06014265264 443527.61085169831 4170 36 36 150120 5404320
+60	6089797 257846 84517 433479 86454.06014265264 443527.61085204231 8340 0 1 4170 4170
+61	6347643 133093 84517 433478 86454.06014265264 443527.61085169831 4170 43 43 179310 7710330
+62	6480736 133093 84519 433480 86454.06014304664 443527.61085209231 4170 43 43 179310 7710330
+63	6613829 133093 84519 433480 86454.06014304664 443527.61085209231 4170 36 36 150120 5404320
+64	6746922 36822 84520 433190 86454.06014304664 443454.06014304664 1191 1 1 1191 1191
+65	6783744 171106 84522 433482 86454.06014304664 443527.61085209231 5361 28 36 183468 6338064
+66	6954850 171106 84523 433483 86454.06014304664 443527.61085209231 5361 64 64 343104 21958656
+67	7125956 171106 84524 433484 86454.06014362264 443527.61085266831 5361 64 64 343104 21958656
+68	7297062 171106 84525 433485 86454.06014367264 443527.61085271831 5361 64 64 343104 21958656
+69	7468168 171106 84525 433485 86454.06014367264 443527.61085271831 5361 64 64 343104 21958656
+70	7639274 171106 84526 433486 86454.06014367264 443527.61085271831 5361 28 36 183468 6338064
+71	7810380 36822 84528 433198 86454.06014367264 443454.06014367264 1191 1 1 1191 1191
+72	7847202 38013 84530 433200 86454.06014367264 443454.06014367264 1191 28 28 33348 933744
+73	7885215 38013 84531 433201 86454.06014367264 443454.06014367264 1191 64 64 76224 4878336
+74	7923228 38013 84533 433203 86454.06014424864 443454.06014424864 1191 64 64 76224 4878336
+75	7961241 38013 84534 433204 86454.06014429864 443454.06014429864 1191 64 64 76224 4878336
+76	7999254 38013 84534 433204 86454.06014429864 443454.06014429864 1191 64 64 76224 4878336
+77	8037267 38013 84535 433205 86454.06014429864 443454.06014429864 1191 28 28 33348 933744
+78	8075280 133093 84545 433488 86454.06014492464 443527.61085271831 4170 16 16 66720 1067520
+79	8208373 140326 84545 433488 86454.06014492464 443527.61085271831 4170 1 4170 8696535 24179266145
+80	8348699 73704 84548 433222 86455.05014002279 443458.05014002279 2384 0 2 2384 4768
+81	8422403 18426 84553 433223 86473.78272917559 443473.78272917559 596 7 7 4172 29204
+82	8440829 19022 84553 433223 86473.78272917559 443473.78272917559 596 14 14 8344 116816
+83	8459851 19618 84553 433223 86473.78272917559 443473.78272917559 596 600 600 357600 214560000
+84	8479469 22002 84553 433223 86473.78272917559 443473.78272917559 596 4.07808 4.07808 2430.53568 9911.9189458944
+85	8501471 25578 84553 433223 86473.78272917559 443473.78272917559 596 0.66151720008 0.66151720008 394.26425124769 260.81258357701
+86	8527049 22002 84553 433223 86473.78272917559 443473.78272917559 596 0.10857 0.10857 64.70772 7.0253171604001
+87	8549051 165834 84554 433307 86473.78272917559 443477.86080917559 5364 1 3 8344 15496
+88	8714885 481510 84554 433307 86473.78272917559 443477.86080917559 14900 0 0.1452 162.85123668001 15.008233838466
+89	9196395 156944 84554 433307 86473.78272917559 443477.86080917559 4768 nan nan nan nan
+90	9353339 481510 84554 433307 86473.78272917559 443477.86080917559 14900 0 0.1452 162.85123668001 15.008233838466
+91	9834849 73704 84554 433236 86473.78272917559 443473.86080917559 2384 0 2 2384 3576
+92	9908553 147408 84578 433307 86474.86080917559 443477.86080917559 4768 0 3 6556 14900
+93	10055961 18426 84581 433251 86477.08346584673 443477.08346584673 596 7 7 4172 29204
+94	10074387 19022 84581 433251 86477.08346584673 443477.08346584673 596 14 14 8344 116816
+95	10093409 19618 84581 433251 86477.08346584673 443477.08346584673 596 600 600 357600 214560000
+96	10113027 22002 84581 433251 86477.08346584673 443477.08346584673 596 4.07808 4.07808 2430.53568 9911.9189458944
+97	10135029 25578 84581 433251 86477.08346584673 443477.08346584673 596 0.66151720008 0.66151720008 394.26425124769 260.81258357701
+98	10160607 22002 84581 433251 86477.08346584673 443477.08346584673 596 0.10857 0.10857 64.70772 7.0253171604001
+99	10182609 110556 84582 433312 86477.08346584673 443481.16154584673 3576 1 3 5960 11920
+100	10293165 318060 84582 433312 86477.08346584673 443481.16154584673 9536 0 0.1452 124.69531668 13.786862839265
+101	10611225 121284 84582 433312 86477.08346584673 443481.16154584673 3576 nan nan nan nan
+102	10732509 318060 84582 433312 86477.08346584673 443481.16154584673 9536 0 0.1452 124.69531668 13.786862839265
+103	11050569 76088 84582 433264 86477.08346584673 443477.16154584673 2384 0 2 2384 3576
+104	11126657 76088 84638 433312 86478.16154584673 443481.16154584673 2384 0 2 2384 4768
+105	11202745 19618 84643 433313 86487.23211950421 443487.23211950421 596 11 11 6556 72116
+106	11222363 19618 84643 433313 86487.23211950421 443487.23211950421 596 14 14 8344 116816
+107	11241981 20214 84643 433313 86487.23211950421 443487.23211950421 596 600 600 357600 214560000
+108	11262195 23194 84643 433313 86487.23211950421 443487.23211950421 596 4.856064 4.856064 2894.214144 14054.489112969
+109	11285389 26770 84643 433313 86487.23211950421 443487.23211950421 596 0.738460595664 0.738460595664 440.12251501574 325.01313460366
+110	11312159 22598 84643 433313 86487.23211950421 443487.23211950421 596 0.10857 0.10857 64.70772 7.0253171604001
+111	11334757 114132 84644 433373 86487.23211950421 443492.08818350421 3576 1 3 5960 11920
+112	11448889 318060 84644 433373 86487.23211950421 443492.08818350421 9536 0 0.1452 124.69531668 13.786862839265
+113	11766949 121284 84644 433373 86487.23211950421 443492.08818350421 3576 nan nan nan nan
+114	11888233 318060 84644 433373 86487.23211950421 443492.08818350421 9536 0 0.1452 124.69531668 13.786862839265
+115	12206293 76088 84644 433326 86487.23211950421 443488.08818350421 2384 0 2 2384 3576
+116	12282381 76088 84699 433373 86489.08818350421 443492.08818350421 2384 0 2 2384 4768
+117	12358469 19022 84704 433374 86502.14318743492 443502.14318743492 596 8 8 4768 38144
+118	12377491 19618 84704 433374 86502.14318743492 443502.14318743492 596 14 14 8344 116816
+119	12397109 20214 84704 433374 86502.14318743492 443502.14318743492 596 600 600 357600 214560000
+120	12417323 23194 84704 433374 86502.14318743492 443502.14318743492 596 4.139776 4.139776 2467.306496 10214.096216785
+121	12440517 26770 84704 433374 86502.14318743492 443502.14318743492 596 0.667618996176 0.667618996176 397.90092172089 265.64621393681
+122	12467287 22598 84704 433374 86502.14318743492 443502.14318743492 596 0.10857 0.10857 64.70772 7.0253171604001
+123	12489885 114133 84705 433434 86502.14318743492 443506.28296343492 3576 1 3 5960 11920
+124	12604018 318062 84705 433434 86502.14318743492 443506.28296343492 9536 0 0.1452 124.69531668 13.786862839265
+125	12922080 121285 84705 433434 86502.14318743492 443506.28296343492 3576 nan nan nan nan
+126	13043365 318062 84705 433434 86502.14318743492 443506.28296343492 9536 0 0.1452 124.69531668 13.786862839265
+127	13361427 76088 84705 433387 86502.14318743492 443502.28296343492 2384 0 2 2384 3576
+128	13437515 76089 84760 433434 86503.28296343492 443506.28296343492 2384 0 2 2384 4768
+129	13513604 19023 84765 433435 86527.52277022236 443527.52277022236 596 7 7 4172 29204
+130	13532627 19619 84765 433435 86527.52277022236 443527.52277022236 596 14 14 8344 116816
+131	13552246 20215 84765 433435 86527.52277022236 443527.52277022236 596 600 600 357600 214560000
+132	13572461 22599 84765 433435 86527.52277022236 443527.52277022236 596 4.07808 4.07808 2430.53568 9911.9189458944
+133	13595060 26175 84765 433435 86527.52277022236 443527.52277022236 596 0.66151720008 0.66151720008 394.26425124769 260.81258357701
+134	13621235 22599 84765 433435 86527.52277022236 443527.52277022236 596 0.10857 0.10857 64.70772 7.0253171604001
+135	13643834 114138 84766 433495 86527.52277022236 443531.60085022236 3576 1 3 5960 11920
+136	13757972 318076 84766 433495 86527.52277022236 443531.60085022236 9536 0 0.1452 124.69531668 13.786862839265
+137	14076048 121290 84766 433495 86527.52277022236 443531.60085022236 3576 nan nan nan nan
+138	14197338 318076 84766 433495 86527.52277022236 443531.60085022236 9536 0 0.1452 124.69531668 13.786862839265
+139	14515414 76092 84766 433448 86527.52277022236 443527.60085022236 2384 0 2 2384 3576
+140	14591506 76092 84821 433495 86528.60085022236 443531.60085022236 2384 0 2 2384 4768
+141	14667598 19619 84826 433496 86542.13646800937 443542.13646800937 596 10 10 5960 59600
+142	14687217 19619 84826 433496 86542.13646800937 443542.13646800937 596 14 14 8344 116816
+143	14706836 20215 84826 433496 86542.13646800937 443542.13646800937 596 600 600 357600 214560000
+144	14727051 23195 84826 433496 86542.13646800937 443542.13646800937 596 4.493568 4.493568 2678.166528 12034.523408892
+145	14750246 26771 84826 433496 86542.13646800937 443542.13646800937 596 0.702609378768 0.702609378768 418.75518974572 294.22132372312
+146	14777017 22599 84826 433496 86542.13646800937 443542.13646800937 596 0.10857 0.10857 64.70772 7.0253171604001
+147	14799616 113978 84827 433497 86542.13646800937 443542.13646800937 3571 1 3 5953 11909
+148	14913594 317611 84827 433497 86542.13646800937 443542.13646800937 9522 0 0.1452 124.48609668 13.763730519065
+149	15231205 121120 84827 433497 86542.13646800937 443542.13646800937 3571 nan nan nan nan
+150	15352325 317611 84827 433497 86542.13646800937 443542.13646800937 9522 0 0.1452 124.48609668 13.763730519065
+151	15669936 76028 84827 433498 86542.13646800937 443542.13646800937 2382 0 2 2383 3575
+152	15745964 75964 84882 432970 86543.63003600937 442946.63003600937 2380 0 2 2380 4760
+153	15821928 19586 84887 432971 86689.44204779871 443089.44204779871 595 12 12 7140 85680
+154	15841514 19586 84887 432971 86689.44204779871 443089.44204779871 595 14 14 8330 116620
+155	15861100 20181 84887 432971 86689.44204779871 443089.44204779871 595 600 600 357000 214200000
+156	15881281 23156 84887 432971 86689.44204779871 443089.44204779871 595 5.712128 5.712128 3398.71616 19413.901741588
+157	15904437 26726 84887 432971 86689.44204779871 443089.44204779871 595 0.823126181328 0.823126181328 489.76007789016 403.13434268064
+158	15931163 22561 84887 432971 86689.44204779871 443089.44204779871 595 0.10857 0.10857 64.59915 7.0135297155001
+159	15953724 113946 84888 433067 86689.44204779871 443095.15417579871 3570 1 3 5950 11900
+160	16067670 317541 84888 433067 86689.44204779871 443095.15417579871 9520 0 0.1452 124.48609635 13.763730519065
+161	16385211 121086 84888 433067 86689.44204779871 443095.15417579871 3570 nan nan nan nan
+162	16506297 317541 84888 433067 86689.44204779871 443095.15417579871 9520 0 0.1452 124.48609635 13.763730519065
+163	16823838 75964 84888 432984 86689.44204779871 443091.15417579871 2380 0 2 2380 3570
+164	16899802 75964 84979 433067 86692.15417579871 443095.15417579871 2380 0 2 2380 4760
+0	16975766 8040 433654 590116 444011.19461606326 604211.19461606326 268 8 8 2144 17152
+1	16983806 8308 433654 590116 444011.19461606326 604211.19461606326 268 14 14 3752 52528
+2	16992114 8576 433654 590116 444011.19461606326 604211.19461606326 268 600 600 160800 96480000
+3	17000690 9916 433654 590116 444011.19461606326 604211.19461606326 268 4.139776 4.139776 1109.459968 4592.9157484872
+4	17010606 11524 433654 590116 444011.19461606326 604211.19461606326 268 0.667618996176 0.667618996176 178.92189097517 119.45165324675
+5	17022130 9648 433654 590116 444011.19461606326 604211.19461606326 268 0.10857 0.10857 29.09676 3.1590352332
+6	17031778 48240 433655 590144 444011.19461606326 604215.33439206326 1608 1 3 2680 5360
+7	17080018 134804 433655 590144 444011.19461606326 604215.33439206326 4288 0 0.1452 56.07104844 6.1994618136291
+8	17214822 51456 433655 590144 444011.19461606326 604215.33439206326 1608 nan nan nan nan
+9	17266278 134804 433655 590144 444011.19461606326 604215.33439206326 4288 0 0.1452 56.07104844 6.1994618136291
+10	17401082 33232 433655 590129 444011.19461606326 604211.33439206326 1072 0 2 1072 1608
+11	17434314 33232 433679 590144 444012.33439206326 604215.33439206326 1072 0 2 1072 2144
+12	17467546 7504 433683 590145 444015.47296805 604215.47296805 268 7 7 1876 13132
+13	17475050 7772 433683 590145 444015.47296805 604215.47296805 268 14 14 3752 52528
+14	17482822 8040 433683 590145 444015.47296805 604215.47296805 268 600 600 160800 96480000
+15	17490862 9112 433683 590145 444015.47296805 604215.47296805 268 4.07808 4.07808 1092.92544 4457.0373783552
+16	17499974 10720 433683 590145 444015.47296805 604215.47296805 268 0.66151720008 0.66151720008 177.28660962144 117.27814160845
+17	17510694 9112 433683 590145 444015.47296805 604215.47296805 268 0.10857 0.10857 29.09676 3.1590352332
+18	17519806 45024 433684 590173 444015.47296805 604219.55104805 1608 1 3 2680 5360
+19	17564830 126228 433684 590173 444015.47296805 604219.55104805 4288 0 0.1452 56.07104844 6.1994618136291
+20	17691058 48240 433684 590173 444015.47296805 604219.55104805 1608 nan nan nan nan
+21	17739298 126228 433684 590173 444015.47296805 604219.55104805 4288 0 0.1452 56.07104844 6.1994618136291
+22	17865526 30016 433684 590158 444015.47296805 604215.55104805 1072 0 2 1072 1608
+23	17895542 30016 433708 590173 444016.55104805 604219.55104805 1072 0 2 1072 2144
+24	17925558 8576 433712 590174 444053.55657202279 604253.55657202279 268 10 10 2680 26800
+25	17934134 8576 433712 590174 444053.55657202279 604253.55657202279 268 14 14 3752 52528
+26	17942710 8844 433712 590174 444053.55657202279 604253.55657202279 268 600 600 160800 96480000
+27	17951554 10184 433712 590174 444053.55657202279 604253.55657202279 268 4.493568 4.493568 1204.276224 5411.4971033272
+28	17961738 11792 433712 590174 444053.55657202279 604253.55657202279 268 0.702609378768 0.702609378768 188.29931350982 132.30086368758
+29	17973530 9916 433712 590174 444053.55657202279 604253.55657202279 268 0.10857 0.10857 29.09676 3.1590352332
+30	17983446 49848 433713 590270 444053.55657202279 604258.05014002279 1608 1 3 2680 5360
+31	18033294 139092 433713 590270 444053.55657202279 604258.05014002279 4288 0 0.1452 56.07104844 6.1994618136291
+32	18172386 53064 433713 590270 444053.55657202279 604258.05014002279 1608 nan nan nan nan
+33	18225450 139092 433713 590270 444053.55657202279 604258.05014002279 4288 0 0.1452 56.07104844 6.1994618136291
+34	18364542 33232 433713 590187 444053.55657202279 604254.05014002279 1072 0 2 1072 1608
+35	18397774 60096 433514 590628 443542.63003671984 604491.15417650143 1878 16 16 30048 480768
+36	18457870 16647 433581 590629 443691.15417650143 604491.15417650143 537 1 1 537 537
+37	18474517 77280 433516 590650 443542.63003671984 604491.15417775343 2415 28 36 82644 2854896
+38	18551797 77280 433517 590651 443542.63003671984 604491.15417775343 2415 64 64 154560 9891840
+39	18629077 77280 433523 590653 443542.63003729584 604491.15417832943 2415 64 64 154560 9891840
+40	18706357 77280 433526 590654 443542.63003734584 604491.15417837943 2415 64 64 154560 9891840
+41	18783637 77280 433526 590654 443542.63003734584 604491.15417837943 2415 64 64 154560 9891840
+42	18860917 77280 433527 590655 443542.63003734584 604491.15417837943 2415 28 36 82644 2854896
+43	18938197 16647 433591 590639 443691.15417712743 604491.15417712743 537 1 1 537 537
+44	18954844 17184 433593 590641 443691.15417712743 604491.15417712743 537 28 28 15036 421008
+45	18972028 17184 433594 590642 443691.15417712743 604491.15417712743 537 64 64 34368 2199552
+46	18989212 17184 433597 590645 443691.15417770343 604491.15417770343 537 64 64 34368 2199552
+47	19006396 17184 433598 590646 443691.15417775343 604491.15417775343 537 64 64 34368 2199552
+48	19023580 17184 433598 590646 443691.15417775343 604491.15417775343 537 64 64 34368 2199552
+49	19040764 17184 433599 590647 443691.15417775343 604491.15417775343 537 28 28 15036 421008
+50	19057948 60096 433529 590657 443542.63003734584 604491.15417837943 1878 36 36 67608 2433888
+51	19118044 58218 433529 590657 443542.63003734584 604491.15417837943 1878 0 0 0 0
+52	19176262 60096 433530 590658 443542.63003734584 604491.15417837943 1878 36 36 67608 2433888
+53	19236358 116436 433530 590660 443542.63003734584 604491.15417872343 3756 0 1 1878 1878
+54	19352794 60096 433530 590658 443542.63003734584 604491.15417837943 1878 43 43 80754 3472422
+55	19412890 60096 433534 590661 443542.63003773984 604491.15417877343 1878 43 43 80754 3472422
+56	19472986 60096 433534 590661 443542.63003773984 604491.15417877343 1878 36 36 67608 2433888
+57	19533082 60096 433538 590665 443542.64003802784 604491.16417906143 1878 36 36 67608 2433888
+58	19593178 58218 433538 590665 443542.64003802784 604491.16417906143 1878 0 0 0 0
+59	19651396 60096 433539 590666 443542.64003802784 604491.16417906143 1878 36 36 67608 2433888
+60	19711492 116436 433539 590667 443542.64003802784 604491.16417940543 3756 0 1 1878 1878
+61	19827928 60096 433539 590666 443542.64003802784 604491.16417906143 1878 43 43 80754 3472422
+62	19888024 60096 433541 590668 443542.64003842184 604491.16417945543 1878 43 43 80754 3472422
+63	19948120 60096 433541 590668 443542.64003842184 604491.16417945543 1878 36 36 67608 2433888
+64	20008216 16647 433621 590669 443691.16417945543 604491.16417945543 537 1 1 537 537
+65	20024863 77280 433543 590687 443542.64003842184 604491.16418070743 2415 28 36 82644 2854896
+66	20102143 77280 433544 590688 443542.64003842184 604491.16418070743 2415 64 64 154560 9891840
+67	20179423 77280 433545 590690 443542.64003899784 604491.16418128343 2415 64 64 154560 9891840
+68	20256703 77280 433546 590691 443542.64003904784 604491.16418133343 2415 64 64 154560 9891840
+69	20333983 77280 433546 590691 443542.64003904784 604491.16418133343 2415 64 64 154560 9891840
+70	20411263 77280 433547 590692 443542.64003904784 604491.16418133343 2415 28 36 82644 2854896
+71	20488543 16647 433629 590677 443691.16418008143 604491.16418008143 537 1 1 537 537
+72	20505190 17184 433631 590679 443691.16418008143 604491.16418008143 537 28 28 15036 421008
+73	20522374 17184 433632 590680 443691.16418008143 604491.16418008143 537 64 64 34368 2199552
+74	20539558 17184 433634 590682 443691.16418065743 604491.16418065743 537 64 64 34368 2199552
+75	20556742 17184 433635 590683 443691.16418070743 604491.16418070743 537 64 64 34368 2199552
+76	20573926 17184 433635 590683 443691.16418070743 604491.16418070743 537 64 64 34368 2199552
+77	20591110 17184 433636 590684 443691.16418070743 604491.16418070743 537 28 28 15036 421008
+78	20608294 60096 433549 590694 443542.64003904784 604491.16418133343 1878 16 16 30048 480768
+79	20668390 63852 433549 590694 443542.64003904784 604491.16418133343 1878 4171 6048 9595641 49580884879
+80	20732242 33232 433804 590270 444055.05014002279 604258.05014002279 1072 0 2 1072 2144
+81	20765474 8308 433809 590271 444073.78272917559 604273.78272917559 268 7 7 1876 13132
+82	20773782 8576 433809 590271 444073.78272917559 604273.78272917559 268 14 14 3752 52528
+83	20782358 8844 433809 590271 444073.78272917559 604273.78272917559 268 600 600 160800 96480000
+84	20791202 9916 433809 590271 444073.78272917559 604273.78272917559 268 4.07808 4.07808 1092.92544 4457.0373783552
+85	20801118 11524 433809 590271 444073.78272917559 604273.78272917559 268 0.66151720008 0.66151720008 177.28660962144 117.27814160845
+86	20812642 9916 433809 590271 444073.78272917559 604273.78272917559 268 0.10857 0.10857 29.09676 3.1590352332
+87	20822558 74772 433810 590355 444073.78272917559 604277.86080917559 2412 1 3 3752 6968
+88	20897330 217080 433810 590355 444073.78272917559 604277.86080917559 6700 0 0.1452 73.22840844 6.7486689072291
+89	21114410 70752 433810 590355 444073.78272917559 604277.86080917559 2144 nan nan nan nan
+90	21185162 217080 433810 590355 444073.78272917559 604277.86080917559 6700 0 0.1452 73.22840844 6.7486689072291
+91	21402242 33232 433810 590284 444073.78272917559 604273.86080917559 1072 0 2 1072 1608
+92	21435474 66464 433834 590355 444074.86080917559 604277.86080917559 2144 0 3 2948 6700
+93	21501938 8308 433837 590299 444077.08346584673 604277.08346584673 268 7 7 1876 13132
+94	21510246 8576 433837 590299 444077.08346584673 604277.08346584673 268 14 14 3752 52528
+95	21518822 8844 433837 590299 444077.08346584673 604277.08346584673 268 600 600 160800 96480000
+96	21527666 9916 433837 590299 444077.08346584673 604277.08346584673 268 4.07808 4.07808 1092.92544 4457.0373783552
+97	21537582 11524 433837 590299 444077.08346584673 604277.08346584673 268 0.66151720008 0.66151720008 177.28660962144 117.27814160845
+98	21549106 9916 433837 590299 444077.08346584673 604277.08346584673 268 0.10857 0.10857 29.09676 3.1590352332
+99	21559022 49848 433838 590360 444077.08346584673 604281.16154584673 1608 1 3 2680 5360
+100	21608870 143380 433838 590360 444077.08346584673 604281.16154584673 4288 0 0.1452 56.07104844 6.1994618136291
+101	21752250 54672 433838 590360 444077.08346584673 604281.16154584673 1608 nan nan nan nan
+102	21806922 143380 433838 590360 444077.08346584673 604281.16154584673 4288 0 0.1452 56.07104844 6.1994618136291
+103	21950302 34304 433838 590312 444077.08346584673 604277.16154584673 1072 0 2 1072 1608
+104	21984606 34304 433894 590360 444078.16154584673 604281.16154584673 1072 0 2 1072 2144
+105	22018910 8844 433899 590361 444087.23211950421 604287.23211950421 268 11 11 2948 32428
+106	22027754 8844 433899 590361 444087.23211950421 604287.23211950421 268 14 14 3752 52528
+107	22036598 9112 433899 590361 444087.23211950421 604287.23211950421 268 600 600 160800 96480000
+108	22045710 10452 433899 590361 444087.23211950421 604287.23211950421 268 4.856064 4.856064 1301.425152 6319.8038293217
+109	22056162 12060 433899 590361 444087.23211950421 604287.23211950421 268 0.738460595664 0.738460595664 197.90743963795 146.14684576138
+110	22068222 10184 433899 590361 444087.23211950421 604287.23211950421 268 0.10857 0.10857 29.09676 3.1590352332
+111	22078406 51456 433900 590421 444087.23211950421 604292.08818350421 1608 1 3 2680 5360
+112	22129862 143380 433900 590421 444087.23211950421 604292.08818350421 4288 0 0.1452 56.07104844 6.1994618136291
+113	22273242 54672 433900 590421 444087.23211950421 604292.08818350421 1608 nan nan nan nan
+114	22327914 143380 433900 590421 444087.23211950421 604292.08818350421 4288 0 0.1452 56.07104844 6.1994618136291
+115	22471294 34304 433900 590374 444087.23211950421 604288.08818350421 1072 0 2 1072 1608
+116	22505598 34304 433955 590421 444089.08818350421 604292.08818350421 1072 0 2 1072 2144
+117	22539902 8576 433960 590422 444102.14318743492 604302.14318743492 268 8 8 2144 17152
+118	22548478 8844 433960 590422 444102.14318743492 604302.14318743492 268 14 14 3752 52528
+119	22557322 9112 433960 590422 444102.14318743492 604302.14318743492 268 600 600 160800 96480000
+120	22566434 10452 433960 590422 444102.14318743492 604302.14318743492 268 4.139776 4.139776 1109.459968 4592.9157484872
+121	22576886 12060 433960 590422 444102.14318743492 604302.14318743492 268 0.667618996176 0.667618996176 178.92189097517 119.45165324675
+122	22588946 10184 433960 590422 444102.14318743492 604302.14318743492 268 0.10857 0.10857 29.09676 3.1590352332
+123	22599130 51456 433961 590482 444102.14318743492 604306.28296343492 1608 1 3 2680 5360
+124	22650586 143380 433961 590482 444102.14318743492 604306.28296343492 4288 0 0.1452 56.07104844 6.1994618136291
+125	22793966 54672 433961 590482 444102.14318743492 604306.28296343492 1608 nan nan nan nan
+126	22848638 143380 433961 590482 444102.14318743492 604306.28296343492 4288 0 0.1452 56.07104844 6.1994618136291
+127	22992018 34304 433961 590435 444102.14318743492 604302.28296343492 1072 0 2 1072 1608
+128	23026322 34304 434016 590482 444103.28296343492 604306.28296343492 1072 0 2 1072 2144
+129	23060626 8576 434021 590483 444127.52277022236 604327.52277022236 268 7 7 1876 13132
+130	23069202 8844 434021 590483 444127.52277022236 604327.52277022236 268 14 14 3752 52528
+131	23078046 9112 434021 590483 444127.52277022236 604327.52277022236 268 600 600 160800 96480000
+132	23087158 10184 434021 590483 444127.52277022236 604327.52277022236 268 4.07808 4.07808 1092.92544 4457.0373783552
+133	23097342 11792 434021 590483 444127.52277022236 604327.52277022236 268 0.66151720008 0.66151720008 177.28660962144 117.27814160845
+134	23109134 10184 434021 590483 444127.52277022236 604327.52277022236 268 0.10857 0.10857 29.09676 3.1590352332
+135	23119318 51456 434022 590543 444127.52277022236 604331.60085022236 1608 1 3 2680 5360
+136	23170774 143380 434022 590543 444127.52277022236 604331.60085022236 4288 0 0.1452 56.07104844 6.1994618136291
+137	23314154 54672 434022 590543 444127.52277022236 604331.60085022236 1608 nan nan nan nan
+138	23368826 143380 434022 590543 444127.52277022236 604331.60085022236 4288 0 0.1452 56.07104844 6.1994618136291
+139	23512206 34304 434022 590496 444127.52277022236 604327.60085022236 1072 0 2 1072 1608
+140	23546510 34304 434077 590543 444128.60085022236 604331.60085022236 1072 0 2 1072 2144
+141	23580814 8844 434082 590544 444142.13646800937 604342.13646800937 268 10 10 2680 26800
+142	23589658 8844 434082 590544 444142.13646800937 604342.13646800937 268 14 14 3752 52528
+143	23598502 9112 434082 590544 444142.13646800937 604342.13646800937 268 600 600 160800 96480000
+144	23607614 10452 434082 590544 444142.13646800937 604342.13646800937 268 4.493568 4.493568 1204.276224 5411.4971033272
+145	23618066 12060 434082 590544 444142.13646800937 604342.13646800937 268 0.702609378768 0.702609378768 188.29931350982 132.30086368758
+146	23630126 10184 434082 590544 444142.13646800937 604342.13646800937 268 0.10857 0.10857 29.09676 3.1590352332
+147	23640310 51616 433509 590604 443542.63003600937 604346.63003600937 1613 1 3 2687 5371
+148	23691926 143845 433498 590604 443542.13646800937 604346.63003600937 4302 0 0.1452 56.28026844 6.2225941338291
+149	23835771 54842 433509 590604 443542.63003600937 604346.63003600937 1613 nan nan nan nan
+150	23890613 143845 433498 590604 443542.13646800937 604346.63003600937 4302 0 0.1452 56.28026844 6.2225941338291
+151	24034458 34368 433509 590557 443542.63003600937 604342.63003600937 1074 0 2 1073 1609
+152	24068826 34432 433552 590604 443543.63003600937 604346.63003600937 1076 0 2 1076 2152
+153	24103258 8877 433557 590605 443689.44204779871 604489.44204779871 269 12 12 3228 38736
+154	24112135 8877 433557 590605 443689.44204779871 604489.44204779871 269 14 14 3766 52724
+155	24121012 9146 433557 590605 443689.44204779871 604489.44204779871 269 600 600 161400 96840000
+156	24130158 10491 433557 590605 443689.44204779871 604489.44204779871 269 5.712128 5.712128 1536.562432 8777.0412915753
+157	24140649 12105 433557 590605 443689.44204779871 604489.44204779871 269 0.823126181328 0.823126181328 221.42094277723 182.25737509427
+158	24152754 10222 433557 590605 443689.44204779871 604489.44204779871 269 0.10857 0.10857 29.20533 3.1708226781
+159	24162976 51648 433558 590701 443689.44204779871 604495.15417579871 1614 1 3 2690 5380
+160	24214624 143915 433558 590701 443689.44204779871 604495.15417579871 4304 0 0.1452 56.28026877 6.2225941338292
+161	24358539 54876 433558 590701 443689.44204779871 604495.15417579871 1614 nan nan nan nan
+162	24413415 143915 433558 590701 443689.44204779871 604495.15417579871 4304 0 0.1452 56.28026877 6.2225941338292
+163	24557330 34432 433558 590618 443689.44204779871 604491.15417579871 1076 0 2 1076 1614
+164	24591762 34432 433649 590701 443692.15417579871 604495.15417579871 1076 0 2 1076 2152
+
