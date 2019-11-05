@@ -73,19 +73,26 @@ class INET_API SimpleLoRaApp : public ILifecycle, public inet::physicallayer::St
         /* Not related to Lora */
         simtime_t lastTime;
 
-        const simtime_t DataAquisitionInterval = 600; // 10 min.
-        const simtime_t MCWakeupTime = (double)10/1000; // 10ms
-        const double MCSleepCurrent = (double)30/1000000; // 30uA
-        const double MCWakeCurrent = (double)30/1000; // 30mA
-        const double MCVoltage = 3.3; // 3,3V
 
-        const double SensorVoltage = 3.3; // up to 5V
-        const simtime_t SensorAquisitionTime = 2; // 1ms
+        const simtime_t DataAquisitionInterval = 600; // 10 min. loop interval
+
+        //microcontroller parameters
+        const simtime_t MCWakeupTime = (double)10/1000; // 10ms, todo: ignore
+        const double MCSleepCurrent = (double)30/1000000; // 30uA, todo: measure
+        const double MCWakeCurrent = (double)30/1000; // 30mA, todo: measure
+        const double MCVoltage = 3.3; // 3,3V typical
+
+        //sensor parameters
+        const double SensorVoltage = 5.0; // 3,3 - 6V
+        const simtime_t SensorAquisitionTime = 2; // 5ms for communication, 2s of 1,7 - 2s of measuring
         const double SensorSleepCurrent = (double)50/1000000; // 50uA
-        const double SensorWakeCurrent = (double)1.5/1000 ; // 1,5mA
+        const double SensorWakeCurrent = (double)1.5/1000 ; // typical 0,8mA - 1,5mA (average - measuring) for 5V
+
 
         double totalMCEnergyConsumed = 0;
         double totalSensorEnergyConsumed = 0;
+
+
         cOutVector messageDelayVector;
         cOutVector elapsedTimeVector;
         cOutVector MCEnergyVector;
