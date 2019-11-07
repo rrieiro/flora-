@@ -72,13 +72,13 @@ const ITransmission *LoRaTransmitter::createTransmission(const IRadio *transmitt
     //preambleDuration = Tpreamble;
     int payloadBytes = 0;
     if(iAmGateway) payloadBytes = 15;
-    else payloadBytes = 20;
+    else payloadBytes = 4; //20;
     int payloadSymbNb = 8 + math::max(ceil((8*payloadBytes - 4*frame->getLoRaSF() + 28 + 16 - 20*0)/(4*(frame->getLoRaSF()-2*0)))*(frame->getLoRaCR() + 4), 0);
 
-    simtime_t Theader = 0.5 * (8+payloadSymbNb) * Tsym / 1000;
+    simtime_t Theader = 0; //0.5 * (8+payloadSymbNb) * Tsym / 1000; Already accounted for in TPayload
     simtime_t Tpayload = 0.5 * (8+payloadSymbNb) * Tsym / 1000;
 
-    const simtime_t duration = Tpreamble + Theader + Tpayload;
+    const simtime_t duration = Tpreamble + Tpayload; // Theader is already accounted for
     const simtime_t endTime = startTime + duration;
     IMobility *mobility = transmitter->getAntenna()->getMobility();
     const Coord startPosition = mobility->getCurrentPosition();
