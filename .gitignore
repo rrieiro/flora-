@@ -39,5 +39,6 @@ simulations/**/results
 simulations/**/.tkenvrc
 simulations/**/valgrind.out
 simulations/**/log.txt
+simulations/results/*
 
 
