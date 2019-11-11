@@ -169,7 +169,7 @@ void SimpleLoRaApp::handleMessage(cMessage *msg)
                 scheduleAt(now + DataAquisitionInterval , sendMeasurements);
 
                 //Energy calculations
-                simtime_t mcWakeTime = MCWakeupTime + SensorAquisitionTime + messageDelayTime;
+                simtime_t mcWakeTime = SensorAquisitionTime + messageDelayTime;
                 simtime_t mcSleepingTime = DataAquisitionInterval - mcWakeTime;
                 double mcEnergy = MCVoltage * MCWakeCurrent * mcWakeTime.dbl()
                         + MCVoltage * MCSleepCurrent * mcSleepingTime.dbl();
@@ -177,8 +177,11 @@ void SimpleLoRaApp::handleMessage(cMessage *msg)
                 MCEnergyVector.record(mcEnergy);
                 totalMCEnergyConsumed += mcEnergy;
 
-                double sensorEnergy = (SensorVoltage * SensorWakeCurrent * SensorAquisitionTime.dbl()
-                        + SensorVoltage * SensorSleepCurrent * (elapsedTime.dbl() - SensorAquisitionTime.dbl()));
+                double sensorEnergy =
+                        SensorVoltage * SensorAquisitionCurrent * SensorAquisitionTime.dbl()
+                        + SensorVoltage * SensorMeasurementCurrent * SensorMeasuringTime.dbl()
+                        + SensorVoltage * SensorSleepCurrent *
+                        (DataAquisitionInterval - SensorAquisitionTime - SensorMeasuringTime).dbl();
 
                 sensorEnergyVector.record(sensorEnergy);
                 totalSensorEnergyConsumed += sensorEnergy;
