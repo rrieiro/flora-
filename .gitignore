@@ -41,5 +41,4 @@ simulations/**/valgrind.out
 simulations/**/log.txt
 simulations/results/*
 
-simulations/.qtenvrc
 /.computed/
