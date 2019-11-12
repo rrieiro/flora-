@@ -74,11 +74,11 @@ class INET_API SimpleLoRaApp : public ILifecycle, public inet::physicallayer::St
         simtime_t lastTime;
 
 
-        const simtime_t DataAquisitionInterval = 10; // typical 10 min. loop interval
+        const simtime_t DataAquisitionInterval = 10*60; // typical 10 min. loop interval
 
         //microcontroller parameters
-        const double MCSleepCurrent = (double)46/1000; // 46mA, todo: measure again
-        const double MCWakeCurrent = (double)54.8/1000; // 54.8mA,
+        const double MCSleepCurrent = (double)6.15/1000; // 6.15mA
+        const double MCWakeCurrent = (double)12.4/1000; // 12.4mA,
         const double MCVoltage = 3.3; // 3,3V typical
 
         //sensor parameters
